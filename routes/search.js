@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 const Bag = require('../models/bag')
-const Box = require('../models/box')
+// const Box = require('../models/box')
 const { isAuthenticated } = require('./middleware');
 
 router
@@ -14,6 +14,7 @@ router
             {
                 $or: [
                     { "species": { "$regex": search, "$options": "i" } },
+                    { "accession": { "$regex": search, "$options": "i" } },
                     { "code": { "$regex": search, "$options": "i" } },
                 ]
             }

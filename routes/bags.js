@@ -21,7 +21,7 @@ router
     .get('/bag', (req, res, next) => {
 
         Bag.findOne({ code: req.query.code })
-        .populate('box')
+            .populate('box')
             .then(bag => {
                 if (bag) {
                     res.status(200).json({ bag: bag });
@@ -38,17 +38,24 @@ router
     .all(isAuthenticated)
     .post('/bags/new', (req, res, next) => {
 
+
         if (!req.body.species) {
-            return res.status(500).json({ error: new Error('value "bay" required') });
+            return res.status(500).json({ error: new Error('value "species" required') });
+        }
+        if (!req.body.accession) {
+            return res.status(500).json({ error: new Error('value "accession" required') });
         }
         if (!req.body.boxID) {
             return res.status(500).json({ error: new Error('value "boxID" required') });
         }
 
+        
+
         new Bag({
             createdBy: req.user.username,
             box: req.body.boxID,
-            species: req.body.species
+            species: req.body.species,
+            accession: req.body.accession
         })
             .save()
             .then(savedBag => {

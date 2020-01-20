@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
     },
     bay: {
         required: true,
-        type: Number
+        type: String
     }
 }, { timestamps: true, toJSON: { virtuals: true } });
 

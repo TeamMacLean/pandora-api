@@ -5,7 +5,8 @@ require('dotenv').config()
 const authRoutes = require("./routes/auth");
 const boxRoutes = require('./routes/boxes');
 const bagRoutes = require('./routes/bags');
-const searchRoutes = require('./routes/search')
+const searchRoutes = require('./routes/search');
+const logRoutes = require('./routes/logs');
 
 const { getUserFromRequest } = require("./lib/utils");
 
@@ -33,10 +34,8 @@ app.use(authRoutes);
 app.use(boxRoutes);
 app.use(bagRoutes);
 app.use(searchRoutes);
-// app.use((req, res, next) => {
-//     console.log(req);
-//     next();
-// })
+app.use(logRoutes);
+
 
 
 module.exports = app;

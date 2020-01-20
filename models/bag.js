@@ -14,6 +14,10 @@ const schema = new mongoose.Schema({
         required: true,
         type: String
     },
+    accession: {
+        required: true,
+        type: String
+    },
     box: { type: mongoose.Schema.Types.ObjectId, ref: 'Box', required: true },
 }, { timestamps: true, toJSON: { virtuals: true } });
 
