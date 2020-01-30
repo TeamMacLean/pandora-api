@@ -22,6 +22,7 @@ router
 
         Bag.findOne({ code: req.query.code })
             .populate('box')
+            .populate({path: 'logs', options: { sort: { 'createdAt': -1 } } })
             .then(bag => {
                 if (bag) {
                     res.status(200).json({ bag: bag });
@@ -48,6 +49,10 @@ router
         if (!req.body.boxID) {
             return res.status(500).json({ error: new Error('value "boxID" required') });
         }
+        if (!req.body.boshortNameID) {
+            return res.status(500).json({ error: new Error('value "shortName" required') });
+        }
+        
 
         
 
@@ -55,7 +60,8 @@ router
             createdBy: req.user.username,
             box: req.body.boxID,
             species: req.body.species,
-            accession: req.body.accession
+            accession: req.body.accession,
+            shortName: req.body.shortName
         })
             .save()
             .then(savedBag => {
