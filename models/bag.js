@@ -28,7 +28,7 @@ schema.pre('validate', function (next) {  // can't use arror function, or this w
     let ctx = this
     ctx.constructor.count({ box: ctx.id, shortName: ctx.shortName })
         .then(count => {
-            ctx.code = `${ctx.shortName}_${("000" + count).slice(-4)}`
+            ctx.code = `${ctx.shortName}_${("000" + count + 1).slice(-4)}`
             next()
         })
         .catch(err => {
