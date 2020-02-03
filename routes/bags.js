@@ -49,7 +49,7 @@ router
         if (!req.body.boxID) {
             return res.status(500).json({ error: new Error('value "boxID" required') });
         }
-        if (!req.body.boshortNameID) {
+        if (!req.body.shortName) {
             return res.status(500).json({ error: new Error('value "shortName" required') });
         }
         
