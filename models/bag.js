@@ -8,10 +8,6 @@ const schema = new mongoose.Schema({
         type: String,
         unique: true,
     },
-    shortName: {
-        required: true,
-        type: String
-    },
     species: {
         required: true,
         type: String
@@ -28,7 +24,16 @@ schema.pre('validate', function (next) {  // can't use arror function, or this w
     let ctx = this
     ctx.constructor.count({ box: ctx.id, shortName: ctx.shortName })
         .then(count => {
-            ctx.code = `${ctx.shortName}_${("000" + count + 1).slice(-4)}`
+
+            const splitsville = ctx.shortName.split(' ');
+            const num = ("000" + count + 1).slice(-4)
+
+            if (splitsville.length > 1) {
+                ctx.code = `${splitsville[0][0].toUpperCase()}.${splitsville[1].toLowerCase()}_${num}`
+            } else {
+                ctx.code = `${ctx.shortName}_${num}`
+            }
+
             next()
         })
         .catch(err => {
