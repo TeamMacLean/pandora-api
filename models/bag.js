@@ -49,9 +49,9 @@ schema.statics.generateBagShortName = function generateBagShortName(species) {
             let shortName
             const splitsville = species.split(' ');
             if (splitsville.length > 1 && splitsville[1].length > 0) {
-                shortName = `${splitsville[0][0].toUpperCase()}.${splitsville[1].toLowerCase()}_${num}`
+                shortName = `${splitsville[0][0].toUpperCase()}.${splitsville[1].trim().toLowerCase()}_${num}`
             } else {
-                shortName = `${species}_${num}`
+                shortName = `${species.trim()}_${num}`
             }
 
             return shortName;
