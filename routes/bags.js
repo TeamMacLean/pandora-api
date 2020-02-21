@@ -37,6 +37,21 @@ router
 
 router
     .all(isAuthenticated)
+    .get('/bags/shortname', (req, res, next) => {
+
+        console.log(req.query.species);
+        Bag.generateBagShortName(req.query.species)
+            .then(code => {
+                // console.log(code);
+                return res.send({ code: code })
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    })
+
+router
+    .all(isAuthenticated)
     .post('/bags/new', (req, res, next) => {
 
 
@@ -49,9 +64,6 @@ router
         if (!req.body.boxID) {
             return res.status(500).json({ error: new Error('value "boxID" required') });
         }
-
-
-
 
         new Bag({
             createdBy: req.user.username,
