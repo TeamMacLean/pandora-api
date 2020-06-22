@@ -61,7 +61,7 @@ schema.statics.generateBagShortName = function generateBagShortName(species) {
 }
 
 // generating a non-duplicate Code
-schema.pre('validate', function (next) {  // can't use arror function, or this will be undefinded. fat arrow is lexically scoped.
+schema.pre('validate', function (next) {  // can't use arrow function, or this will be undefinded. fat arrow is lexically scoped.
     let ctx = this
 
     ctx.constructor.generateBagShortName(ctx.species)

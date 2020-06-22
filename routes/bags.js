@@ -17,9 +17,8 @@ const { isAuthenticated } = require('./middleware');
 //     })
 
 router
-    .all(isAuthenticated)
+    // temp GG .all(isAuthenticated)
     .get('/bag', (req, res, next) => {
-
         Bag.findOne({ code: req.query.code })
             .populate('box')
             .populate({ path: 'logs', options: { sort: { 'createdAt': -1 } } })
@@ -36,10 +35,8 @@ router
     })
 
 router
-    .all(isAuthenticated)
+    // temp GG .all(isAuthenticated)
     .get('/bags/shortname', (req, res, next) => {
-
-        console.log(req.query.species);
         Bag.generateBagShortName(req.query.species)
             .then(code => {
                 // console.log(code);
@@ -51,9 +48,8 @@ router
     })
 
 router
-    .all(isAuthenticated)
+    // temp GG .all(isAuthenticated)
     .post('/bags/new', (req, res, next) => {
-
 
         if (!req.body.species) {
             return res.status(500).json({ error: new Error('value "species" required') });

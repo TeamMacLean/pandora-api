@@ -7,6 +7,7 @@ const boxRoutes = require('./routes/boxes');
 const bagRoutes = require('./routes/bags');
 const searchRoutes = require('./routes/search');
 const logRoutes = require('./routes/logs');
+const sequenceRoutes = require("./routes/sequences")
 
 const { getUserFromRequest } = require("./lib/utils");
 
@@ -35,6 +36,7 @@ app.use(boxRoutes);
 app.use(bagRoutes);
 app.use(searchRoutes);
 app.use(logRoutes);
+app.use(sequenceRoutes);
 
 
 
