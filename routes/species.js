@@ -1,14 +1,13 @@
 const express = require("express")
 const router = express.Router();
-const Sequence = require('../models/sequence')
+const Species = require('../models/species')
 const { isAuthenticated } = require('./middleware');
 router
     .all(isAuthenticated)
-    .get('/sequences', (req, res, next) => {
-        console.log('hardwick b stakes')
-        Sequence.find({}).sort('-createdAt')
-            .then(sequences => {
-                res.status(200).json({ sequences: sequences });
+    .get('/species', (req, res, next) => {
+        Species.find({}).sort('-createdAt')
+            .then(species => {
+                res.status(200).json({ species: species });
             })
             .catch(err => {
                 res.status(500).json({ error: err });
@@ -16,12 +15,12 @@ router
 
     })
 
-// db.sequences.update({ _id: ObjectId('5eecee1dece5c2317c61df83')},{$set: {isActive: true}})
+// db.species.update({ _id: ObjectId('5eecee1dece5c2317c61df83')},{$set: {isActive: true}})
 router
     // temp GG .all(isAuthenticated)
-    .put('/sequence', (req, res, next) => {
+    .put('/species', (req, res, next) => {
 
-        Sequence.findByIdAndUpdate(
+        Species.findByIdAndUpdate(
             req.body.id,
             req.body,
             {new: true},
@@ -36,19 +35,19 @@ router
 
 router
     .all(isAuthenticated)
-    .post('/sequences/new', (req, res, next) => {
+    .post('/species/new', (req, res, next) => {
 
         if (!req.body.name) {
             return res.status(500).json({ error: new Error("'Name' field required") });
         }
 
-        new Sequence({
+        new Species({
             name: req.body.name,
             isActive: true
         })
             .save()
-            .then(savedSequence => {
-                res.status(200).json({ sequence: savedSequence });
+            .then(savedSpecies => {
+                res.status(200).json({ species: savedSpecies });
             })
             .catch(err => {
                 console.error(err)

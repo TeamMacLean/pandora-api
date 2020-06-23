@@ -30,13 +30,13 @@ schema.pre('validate', function (next) {  // can't use arror function, or this w
 
 })
 
-schema.virtual('sequences', {
-    ref: 'Sequence',
+schema.virtual('species', {
+    ref: 'Species',
     localField: '_id',
-    foreignField: 'sequence',
+    foreignField: 'species',
     justOne: false, // set true for one-to-one relationship
 });
 
-const Sequence = mongoose.model('Sequence', schema);
+const Species = mongoose.model('Species', schema);
 
-module.exports = Sequence;
+module.exports = Species;
