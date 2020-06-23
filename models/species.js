@@ -9,13 +9,8 @@ const schema = new mongoose.Schema({
     }
 }, { timestamps: true, toJSON: { virtuals: true } });
 
-// db.posts.insert({
-//     name: 'Jonjo Shelvey',
-//     isActive: true,
-// })
-
 // generating a non-duplicate Code
-schema.pre('validate', function (next) {  // can't use arror function, or this will be undefinded. fat arrow is lexically scoped.
+schema.pre('validate', function (next) {  // can't use arrow function, or this will be undefinded. fat arrow is lexically scoped.
     let ctx = this
 
     ctx.constructor.findOne({}).sort({ createdAt: -1 })

@@ -1,0 +1,15 @@
+PUT http://localhost:3002/species
+content-type: application/json
+
+{
+    "id": "5eecee1dece5c2317c61df83",
+    "isActive": true
+}
+
+
+# works
+#GET http://localhost:3002/boxes
+#content-type: application/json
+# {
+#     "name": "sample"
+# }
