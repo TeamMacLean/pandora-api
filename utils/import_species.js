@@ -1,5 +1,5 @@
 const xlsx = require('xlsx')
-const Species = require('../models/Species');
+const Species = require('../models/species');
 const workbook = xlsx.readFile('Specieslist.xlsx');
 
 Promise.all(
