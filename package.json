@@ -17,6 +17,6 @@
     "jsonwebtoken": "^8.5.1",
     "ldapauth-fork": "^4.3.0",
     "mongoose": "^5.8.7",
-    "xlsx": "^0.16.2"
+    "xlsx": "^0.17.0"
   }
 }
