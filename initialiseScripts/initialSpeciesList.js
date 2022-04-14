@@ -41,7 +41,7 @@ module.exports = [
 	"Vicia pubescens",
 	"Vicia narbonensis",
 	"Vigna radiata",
-	"vigna lasiocarpa",
+	"Vigna lasiocarpa",
 	"Vigna luteola",
 	"Vigna parkeri",
 	"Vigna verxillata",
